@@ -1,9 +1,27 @@
 var TODOLIST = [];
 var PARSEDDATA;
 
+function updateLocal() {
+
+    localStorage.setItem("ToDo's", JSON.stringify(TODOLIST));
+}
+
+function getLocalArchive() {
+    var archive = localStorage.getItem("ToDo's");
+     if (archive) {
+    
+    archive = JSON.parse(archive);
+    TODOLIST = archive;
+     }
+     else {
+         TODOLIST = [];
+     }
+
+}
+
 
 class ToDoListObject {
-    constructor(title, id, dateadded) {
+    constructor(title, id, complete) {
         this.title = title;
         this.complete = false;
         this.id = id;
@@ -15,6 +33,7 @@ class ToDoListObject {
 
 
 function generateUI() {
+
 
     var todocontainer = document.createElement('div');
     todocontainer.className = "container-fluid";
@@ -119,7 +138,7 @@ function generateUI() {
 
 
 
-    
+
     buttonrow1.appendChild(buttonrow1col);
     buttonrow2.appendChild(buttonrow2col1);
     buttonrow2.appendChild(buttonrow2col2);
@@ -130,7 +149,7 @@ function generateUI() {
 
 
     todocontainer.appendChild(todorow);
-    
+
     document.getElementById('list').appendChild(todocontainer);
     document.getElementById('list').appendChild(buttoncontainer);
 
@@ -144,20 +163,24 @@ function generateUI() {
     document.getElementById('todocol1').setAttribute('class', 'col-8 text-center');
     // document.getElementById('todocounterliid').setAttribute('class', 'col-2');
 
-    var PARSEDDATA = JSON.parse(localStorage.getItem("ToDo's"));
-            // TODOLIST.push(PARSEDDATA);
-        if (PARSEDDATA.length > 0 || PARSEDDATA.length == 0){
-            // console.log(this.value);
-            for (var i = 0; i < PARSEDDATA.length; i++){
-                console.log();
-                if(PARSEDDATA[i] != null){
-                    var currenttodo = new ToDoListObject(PARSEDDATA[i]['title'], PARSEDDATA[i]['id'], PARSEDDATA[i]['dateadded']);
-                }
-                TODOLIST.push(currenttodo);
-            }
+    getLocalArchive();
 
-            rebuildHTML();
-        }
+
+    // PARSEDDATA = JSON.parse(localStorage.getItem("ToDo's"));
+    // // TODOLIST.push(PARSEDDATA);
+    // if (PARSEDDATA.length > 0 || PARSEDDATA.length == 0) {
+    //     // console.log(this.value);
+    //     for (var i = 0; i < PARSEDDATA.length; i++) {
+    //         console.log();
+    //         if (PARSEDDATA[i] != null) {
+    //             var currenttodo = new ToDoListObject(PARSEDDATA[i]['title'], PARSEDDATA[i]['id'], PARSEDDATA[i]['dateadded']);
+    //         }
+    //         TODOLIST.push(currenttodo);
+    //     }
+
+
+        rebuildHTML();
+    
 
 }
 
