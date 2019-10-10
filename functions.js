@@ -22,6 +22,10 @@ function keyUpInput() {
     }
 }
 
+
+
+
+
 function rebuildHTML() {
 
     document.getElementById('todocounterulid').innerHTML = '';
@@ -39,6 +43,8 @@ function rebuildHTML() {
         completeinput.className = 'col-1 input-group-append px-0';
         completeinput.id = `completeinputid${i}`;
         completeinput.setAttribute("type", "checkbox");
+        completeinput.addEventListener('change', objectCompleted);
+
 
         var todocounterli = document.createElement('li')
         todocounterli.className = 'col-10 list-group-item text-center';
@@ -50,6 +56,7 @@ function rebuildHTML() {
         deleteinput.className = 'col-1 input-group-prepend px-0';
         deleteinput.id = `deleteinputid${i}`;
         deleteinput.setAttribute("type", "checkbox");
+        deleteinput.addEventListener('change', objectDeleted);
 
         linediv.appendChild(completeinput);
         linediv.appendChild(todocounterli);
@@ -57,12 +64,21 @@ function rebuildHTML() {
 
         document.getElementById(`todocounterulid`).appendChild(linediv);
 
+    
 
     }
+}
 
-
+function objectCompleted(){
+    console.log('yea');
 
 }
+
+function objectDeleted(){
+    console.log('no');
+
+}
+
 
 
 
