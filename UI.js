@@ -123,17 +123,20 @@ function generateUI() {
     buttonrow2col1.className = 'col-4 btn btn-secondary';
     buttonrow2col1.id = 'buttonrow1col1';
     buttonrow2col1.innerHTML = 'All'
+    buttonrow2col1.addEventListener('click', displayAll);
 
     buttonrow2col2 = document.createElement('button');
     buttonrow2col2.className = 'col-4 btn btn-success';
     buttonrow2col2.id = 'buttonrow1col2';
     buttonrow2col2.innerHTML = 'Active';
+    buttonrow2col2.addEventListener('click', displayActive);
 
 
     buttonrow2col3 = document.createElement('button');
     buttonrow2col3.className = 'col-4 btn btn-danger';
     buttonrow2col3.id = 'buttonrow1col3';
     buttonrow2col3.innerHTML = 'Completed';
+    buttonrow2col3.addEventListener('click', displayCompleted);
 
 
 
@@ -166,17 +169,6 @@ function generateUI() {
     getLocalArchive();
 
 
-    // PARSEDDATA = JSON.parse(localStorage.getItem("ToDo's"));
-    // // TODOLIST.push(PARSEDDATA);
-    // if (PARSEDDATA.length > 0 || PARSEDDATA.length == 0) {
-    //     // console.log(this.value);
-    //     for (var i = 0; i < PARSEDDATA.length; i++) {
-    //         console.log();
-    //         if (PARSEDDATA[i] != null) {
-    //             var currenttodo = new ToDoListObject(PARSEDDATA[i]['title'], PARSEDDATA[i]['id'], PARSEDDATA[i]['dateadded']);
-    //         }
-    //         TODOLIST.push(currenttodo);
-    //     }
 
 
         rebuildHTML();
