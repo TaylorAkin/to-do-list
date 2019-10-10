@@ -42,7 +42,7 @@ function rebuildHTML() {
 
             var linediv = document.createElement('div')
             linediv.className = 'row';
-            linediv.id = 'todocounterdivcontainerid';
+            linediv.id = `todocounterdivcontainerid${i}`;
 
             var completeinput = document.createElement('input');
             completeinput.className = 'col-1 input-group-append px-0';
@@ -106,19 +106,52 @@ function objectDeleted(e) {
 }
 
 function displayAll(){
-    console.log('all');
 
+    getLocalArchive();
+    
+    console.log('all');
+    for(var i = 0; i < TODOLIST.length; i++){
+        console.log(`todocounterdivcontainerid${i}`);
+
+        if(TODOLIST[i]){
+            document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: compact');
+        }
+        else{
+            document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: none')
+        }
+    }
+    console.log('ta');
 
 }
 
 function displayActive(){
-    console.log('active');
+    console.log(`todocounterdivcontainerid${i}`);
+
+    for(var i = 0; i < TODOLIST.length; i++){
+
+        if(TODOLIST[i]){
+            document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: none')
+        }
+        else{
+            document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: none')
+        }
+    }
 
 
 }
 
 function displayCompleted(){
     console.log('completed');
+    getLocalArchive();
+    for(var i = 0; i < TODOLIST.length; i++){
+
+        if(TODOLIST[i].archive == true){
+            document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: compact')
+        }
+        else{
+            document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: none')
+        }
+    }
 
 }
 
