@@ -1,3 +1,5 @@
+// function that sets value of input to the title for a new Object, on enter press
+
 function keyUpInput() {
 
     if (event.keyCode === 13) {
@@ -25,7 +27,7 @@ function keyUpInput() {
 
 
 
-
+//rebuilds the items html on every enter press, that has a value.
 function rebuildHTML() {
 
     document.getElementById('todocounterulid').innerHTML = '';
@@ -82,6 +84,8 @@ function rebuildHTML() {
 }
 
 
+
+//functions for all buttons
 function objectCompleted(e) {
 
     var idx = e.target.id.split('completeinputid');
@@ -113,8 +117,7 @@ function objectDeleted(e) {
 }
 
 function completeAll() {
-    console.log('ta');
-    console.log(TODOLIST.length);
+  
     for (var i = 0; i < TODOLIST.length; i++) {
 
         if (TODOLIST[i].complete == false) {
@@ -133,14 +136,12 @@ function completeAll() {
 
 
 function backToAct() {
-    console.log('ta');
-    console.log(TODOLIST.length);
+
     for (var i = 0; i < TODOLIST.length; i++) {
 
         if (TODOLIST[i].complete == true) {
             TODOLIST[i].complete = false;
             document.getElementById(`completeinputid${i}`).checked = false;
-
 
         }
 
@@ -166,7 +167,6 @@ function displayAll() {
     }
 
     showRemaining()
-    console.log('ta');
 
 }
 
@@ -186,8 +186,7 @@ function displayActive() {
 }
 
 function displayCompleted() {
-    // console.log('completed');
-    // getLocalArchive();
+    
     for (var i = 0; i < TODOLIST.length; i++) {
 
         if (TODOLIST[i].complete == true) {
@@ -200,12 +199,13 @@ function displayCompleted() {
     showRemaining()
 }
 
+//function to populate show remaining innerhtml
 function showRemaining() {
 
     var remaining = 0;
 
     for (let i = 0; i < TODOLIST.length; i++) {
-        // console.log('tot');
+       
         if (TODOLIST[i].complete == false  && TODOLIST[i].archive == false) {
 
 
