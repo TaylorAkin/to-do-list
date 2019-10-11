@@ -89,6 +89,8 @@ function objectCompleted(e) {
 
     updateLocal()
 
+//Rebuild html here?
+
 }
 
 
@@ -113,7 +115,7 @@ function displayAll(){
     for(var i = 0; i < TODOLIST.length; i++){
         console.log(`todocounterdivcontainerid${i}`);
 
-        if(TODOLIST[i]){
+        if(TODOLIST[i]){ //this doesn't seem like it does the right thing
             document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: compact');
         }
         else{
@@ -123,7 +125,7 @@ function displayAll(){
     console.log('ta');
 
 }
-
+//You don't need 3 separate functions to do the same thing, just 2 if statements
 function displayActive(){
     console.log(`todocounterdivcontainerid${i}`);
 
@@ -145,7 +147,7 @@ function displayCompleted(){
     getLocalArchive();
     for(var i = 0; i < TODOLIST.length; i++){
 
-        if(TODOLIST[i].archive == true){
+        if(TODOLIST[i].archive == true){//not archive, completed
             document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: compact')
         }
         else{
