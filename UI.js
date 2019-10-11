@@ -138,14 +138,33 @@ function generateUI() {
     buttonrow2col3.innerHTML = 'Completed';
     buttonrow2col3.addEventListener('click', displayCompleted);
 
+    completeallbutton = document.createElement('button');
+    completeallbutton.className = 'col-6 btn btn-primary';
+    completeallbutton.id = 'completeid';
+    completeallbutton.innerHTML = 'Complete All';
+    completeallbutton.addEventListener('click', completeAll);
 
+    backtoactive = document.createElement('button');
+    backtoactive.className = 'col-6 btn btn-info';
+    backtoactive.id = 'backtoactiveid';
+    backtoactive.innerHTML = 'Back to Active';
+    backtoactive.addEventListener('click', backToAct);
+
+    remainingcount= document.createElement('div');
+    remainingcount.className = 'col-12';
+    remainingcount.id = 'remainingcountid';
+    remainingcount.innerHTML = 'Remaining Count: 0';
+    
 
 
 
     buttonrow1.appendChild(buttonrow1col);
+    buttonrow2.appendChild(remainingcount);
     buttonrow2.appendChild(buttonrow2col1);
     buttonrow2.appendChild(buttonrow2col2);
     buttonrow2.appendChild(buttonrow2col3);
+    buttonrow2.appendChild(completeallbutton);
+    buttonrow2.appendChild(backtoactive);
 
     buttoncontainer.appendChild(buttonrow2);
     buttoncontainer.appendChild(buttonrow1);

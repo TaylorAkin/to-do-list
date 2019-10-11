@@ -105,6 +105,18 @@ function objectDeleted(e) {
 
 }
 
+function completeAll(){
+
+
+}
+
+
+function backToAct(){
+
+}
+
+
+
 function displayAll(){
 
     getLocalArchive();
