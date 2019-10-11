@@ -1,6 +1,8 @@
 var TODOLIST = [];
 var PARSEDDATA;
 
+
+
 function updateLocal() {
 
     localStorage.setItem("ToDo's", JSON.stringify(TODOLIST));
@@ -58,7 +60,7 @@ function generateUI() {
 
     var input = document.createElement('input');
     input.type = 'text';
-    input.className = 'input-group input-group-lg text-center h3'
+    input.className = 'input-group input-group-lg text-center h3 border'
     input.id = 'inputid';
     input.value = "";
     input.addEventListener('keyup', keyUpInput);
@@ -126,35 +128,34 @@ function generateUI() {
     buttonrow2col1.addEventListener('click', displayAll);
 
     buttonrow2col2 = document.createElement('button');
-    buttonrow2col2.className = 'col-4 btn btn-success';
+    buttonrow2col2.className = 'col-4 btn btn-light';
     buttonrow2col2.id = 'buttonrow1col2';
     buttonrow2col2.innerHTML = 'Active';
     buttonrow2col2.addEventListener('click', displayActive);
 
 
     buttonrow2col3 = document.createElement('button');
-    buttonrow2col3.className = 'col-4 btn btn-danger';
+    buttonrow2col3.className = 'col-4 btn btn-secondary';
     buttonrow2col3.id = 'buttonrow1col3';
     buttonrow2col3.innerHTML = 'Completed';
     buttonrow2col3.addEventListener('click', displayCompleted);
 
     completeallbutton = document.createElement('button');
-    completeallbutton.className = 'col-6 btn btn-primary';
+    completeallbutton.className = 'col-6 btn btn-dark';
     completeallbutton.id = 'completeid';
     completeallbutton.innerHTML = 'Complete All';
     completeallbutton.addEventListener('click', completeAll);
 
     backtoactive = document.createElement('button');
-    backtoactive.className = 'col-6 btn btn-info';
+    backtoactive.className = 'col-6 btn btn-dark';
     backtoactive.id = 'backtoactiveid';
     backtoactive.innerHTML = 'Back to Active';
     backtoactive.addEventListener('click', backToAct);
 
     remainingcount= document.createElement('div');
-    remainingcount.className = 'col-12';
+    remainingcount.className = 'col-12 h3';
     remainingcount.id = 'remainingcountid';
-    remainingcount.innerHTML = 'Remaining Count: 0';
-    
+
 
 
 
@@ -192,6 +193,6 @@ function generateUI() {
 
         rebuildHTML();
     
-
+        showRemaining();
 }
 
