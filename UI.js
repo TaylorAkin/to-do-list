@@ -13,6 +13,7 @@ function getLocalArchive() {
     archive = JSON.parse(archive);
     TODOLIST = archive;
      }
+//Redundant
      else {
          TODOLIST = [];
      }
