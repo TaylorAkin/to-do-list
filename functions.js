@@ -50,10 +50,10 @@ function rebuildHTML() {
             completeinput.setAttribute("type", "checkbox");
             completeinput.addEventListener('change', objectCompleted);
 
-                if(TODOLIST[i].complete == true) {
-                    completeinput.checked = true;
-                    
-                }
+            if (TODOLIST[i].complete == true) {
+                completeinput.checked = true;
+
+            }
 
 
             var todocounterli = document.createElement('li')
@@ -72,8 +72,11 @@ function rebuildHTML() {
             linediv.appendChild(todocounterli);
             linediv.appendChild(deleteinput);
 
+
             document.getElementById(`todocounterulid`).appendChild(linediv);
 
+
+            showRemaining();
         }
     }
 }
@@ -89,6 +92,8 @@ function objectCompleted(e) {
 
     updateLocal()
 
+    showRemaining()
+
 }
 
 
@@ -103,54 +108,117 @@ function objectDeleted(e) {
 
     rebuildHTML();
 
+    showRemaining()
+
 }
 
-function displayAll(){
+function completeAll() {
+    console.log('ta');
+    console.log(TODOLIST.length);
+    for (var i = 0; i < TODOLIST.length; i++) {
+
+        if (TODOLIST[i].complete == false) {
+            console.log('robbie');
+            TODOLIST[i].complete = true;
+            document.getElementById(`completeinputid${i}`).checked = true;
+            // document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: compact');
+        }
+
+        else {
+            TODOLIST[i].complete = true;
+        }
+    }
+    showRemaining()
+}
+
+
+function backToAct() {
+    console.log('ta');
+    console.log(TODOLIST.length);
+    for (var i = 0; i < TODOLIST.length; i++) {
+
+        if (TODOLIST[i].complete == true) {
+            TODOLIST[i].complete = false;
+            document.getElementById(`completeinputid${i}`).checked = false;
+
+
+        }
+
+        else {
+            TODOLIST[i].complete = false;
+        }
+    }
+    showRemaining()
+
+}
+
+
+
+function displayAll() {
 
     getLocalArchive();
-    
-    console.log('all');
-    for(var i = 0; i < TODOLIST.length; i++){
-        console.log(`todocounterdivcontainerid${i}`);
 
-            document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: compact');
-        }
-    
-    
+    // console.log('all');
+    for (var i = 0; i < TODOLIST.length; i++) {
+        // console.log(`todocounterdivcontainerid${i}`);
+
+        document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: compact');
+    }
+
+    showRemaining()
     console.log('ta');
 
 }
 
-function displayActive(){
-    console.log(`todocounterdivcontainerid${i}`);
+function displayActive() {
+    // console.log(`todocounterdivcontainerid${i}`);
 
-    for(var i = 0; i < TODOLIST.length; i++){
+    for (var i = 0; i < TODOLIST.length; i++) {
 
-        if(TODOLIST[i].complete == false){
+        if (TODOLIST[i].complete == false) {
             document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: compact');
         }
-        else{
+        else {
             document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: none');
         }
     }
-
-
+    showRemaining()
 }
 
-function displayCompleted(){
-    console.log('completed');
-    getLocalArchive();
-    for(var i = 0; i < TODOLIST.length; i++){
+function displayCompleted() {
+    // console.log('completed');
+    // getLocalArchive();
+    for (var i = 0; i < TODOLIST.length; i++) {
 
-        if(TODOLIST[i].complete == true){
+        if (TODOLIST[i].complete == true) {
             document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: compact');
         }
-        else{
+        else {
             document.getElementById(`todocounterdivcontainerid${i}`).setAttribute('style', 'display: none');
         }
     }
+    showRemaining()
+}
+
+function showRemaining() {
+
+    var remaining = 0;
+
+    for (let i = 0; i < TODOLIST.length; i++) {
+        // console.log('tot');
+        if (TODOLIST[i].complete == false  && TODOLIST[i].archive == false) {
+
+
+            remaining++
+        }
+        document.getElementById('remainingcountid').innerHTML = `Remaining items: ${remaining}`;
+    }
 
 }
+
+
+
+
 
 
 
