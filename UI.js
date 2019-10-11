@@ -2,7 +2,7 @@ var TODOLIST = [];
 var PARSEDDATA;
 
 
-
+// Set and Get for Local Storage
 function updateLocal() {
 
     localStorage.setItem("ToDo's", JSON.stringify(TODOLIST));
@@ -10,18 +10,20 @@ function updateLocal() {
 
 function getLocalArchive() {
     var archive = localStorage.getItem("ToDo's");
-     if (archive) {
-    
-    archive = JSON.parse(archive);
-    TODOLIST = archive;
-     }
-     else {
-         TODOLIST = [];
-     }
+    if (archive) {
+
+        archive = JSON.parse(archive);
+        TODOLIST = archive;
+    }
+    else {
+        TODOLIST = [];
+    }
 
 }
 
 
+
+//Object Constructor for each item
 class ToDoListObject {
     constructor(title, id, complete) {
         this.title = title;
@@ -67,41 +69,13 @@ function generateUI() {
 
     //task list counter UI
 
-    // var todocounterdivcontainer = document.createElement('div')
-    // todocounterdivcontainer.className = 'container';
-    // todocounterdivcontainer.id = 'todocounterdivcontainerid';
+ 
 
     var todocounterul = document.createElement('ul')
     todocounterul.className = 'container list-group';
     todocounterul.id = 'todocounterulid';
 
-    // var linediv = document.createElement('div')
-    // linediv.className = 'row';
-    // linediv.id = 'todocounterdivcontainerid';
 
-    // var completeinput = document.createElement('input');
-    // completeinput.className = 'col-1 input-group-append px-0';
-    // completeinput.id = 'completeinput.id';
-    // completeinput.setAttribute("type", "checkbox");
-
-    // var todocounterli = document.createElement('li')
-    // todocounterli.className = 'col-10 list-group-item text-center';
-    // todocounterli.id = 'todocounterliid';
-    // todocounterli.setAttribute('style', "list-style-type:none;")
-
-    // var deleteinput = document.createElement('input');
-    // deleteinput.className ='col-1 input-group-prepend px-0';
-    // deleteinput.id = 'deleteinput.id';
-    // deleteinput.setAttribute("type", "checkbox");
-
-
-
-
-    // linediv.appendChild(completeinput);
-    // linediv.appendChild(todocounterli);
-    // linediv.appendChild(deleteinput);
-    // todocounterul.appendChild(linediv);
-    // todocounterdivcontainer.appendChild(todocounterul);
 
 
     //buttons under tasks
@@ -152,7 +126,7 @@ function generateUI() {
     backtoactive.innerHTML = 'Back to Active';
     backtoactive.addEventListener('click', backToAct);
 
-    remainingcount= document.createElement('div');
+    remainingcount = document.createElement('div');
     remainingcount.className = 'col-12 h3';
     remainingcount.id = 'remainingcountid';
 
@@ -188,11 +162,8 @@ function generateUI() {
 
     getLocalArchive();
 
+    rebuildHTML();
 
-
-
-        rebuildHTML();
-    
-        showRemaining();
+    showRemaining();
 }
 
